@@ -2,7 +2,7 @@
 include('header.php');
 session_start();
 if(isset($_SESSION['data']['id'])){
-    if($_SESSION['data']['role']=='admin' && $_SESSION['data']['id']==1){
+    if($_SESSION['data']['role']=='admin' && $_SESSION['data']['id']=="1"){
         header("location: admindash.php");
     }
 }
