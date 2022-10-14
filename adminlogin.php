@@ -1,5 +1,15 @@
 <?php
-include('header.php')
+session_start();
+
+include('header.php');
+
+if(isset($_SESSION['data']['id'])){
+    if($_SESSION['data']['role']=='admin'){
+        header("location: admindash.php");
+    }
+}
+
+
 ?>
 <div class="container" style="width: 500px;">
     <form class="mt-5 center" method="POST" action="<?php htmlspecialchars($_SERVER['PHP_SELF'])  ?>">

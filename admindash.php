@@ -10,6 +10,9 @@ if(isset($_SESSION['data']['id'])){
         header("location: userdash.php");
     }
 }
+if(!isset($_SESSION['data']['id'])){
+    header("location: index.php");
+}
 include('header.php');
 // exit;
 ?>
