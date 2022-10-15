@@ -1,6 +1,14 @@
 <?php
-// include('db.php');
-include('header.php')
+session_start();
+include('header.php');
+if(isset($_SESSION)){
+    if($_SESSION['data']['role']=='admin'){
+        header("location: admindash.php");
+    }else{
+        header("location: userdash.php");
+    }
+}
+// print_r($_SESSION['data']);
 ?>
 <div class="container" style="width: 500px;">
     <form class="mt-5 center" method="POST" action="<?php htmlspecialchars($_SERVER['PHP_SELF']) ?>" enctype="multipart/form-data">

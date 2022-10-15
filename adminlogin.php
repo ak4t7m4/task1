@@ -6,6 +6,8 @@ include('header.php');
 if(isset($_SESSION['data']['id'])){
     if($_SESSION['data']['role']=='admin'){
         header("location: admindash.php");
+    }else{
+        header("location: userdash.php");
     }
 }
 
