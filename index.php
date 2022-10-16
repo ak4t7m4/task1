@@ -10,17 +10,18 @@ if(isset($_SESSION['data']['id'])){
         header("location: admindash.php");
     }
 }
+// print_r($_SESSION);
 ?>
 <div class="container" style="width: 500px;">
     <form class="mt-5 center" method="POST" action="<?php htmlspecialchars($_SERVER["PHP_SELF"]) ?>">
         <h3 style="text-align: center;">User Login</h3>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" name="email" class="form-control">
+            <input type="email" name="email" class="form-control" required>
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" name="password" class="form-control">
+            <input type="password" name="password" class="form-control" required>
         </div>
 
         <button type="submit" name="submit" class="btn btn-primary">Submit</button>

@@ -1,14 +1,5 @@
 <?php
 include("db.php");
-// if (!isset($_SESSION["data"])) {
-//  // $data_array = $_SESSION['data'];
-//   // if (!$data_array["role"] == 'user') {
-//   //   header("location: index.php");
-//   // } elseif (!$data_array["role"] == 'admin') {
-//   //   header("location: adminlogin.php");
-//   // }
-// }
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -52,10 +43,7 @@ include("db.php");
             <a class="nav-link disabled">Disabled</a>
           </li>
         </ul>
-        <form class="d-flex" method="post" role="search">
-          <input class="form-control me-2" type="search" name="s_user" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+      
       </div>
     </div>
   </nav>

@@ -13,4 +13,5 @@ $row = mysqli_fetch_assoc($query);
 
     <h2>This is user dashboard Mr <?php echo $row['name'] ?></h2>
     <a href="ulogout.php"><button class="btn btn-danger mt-5" type="submit">Logout</button></a>
+    <a href="profile.php"><button class="btn btn-success mt-5" type="submit">Profile</button></a>
 </div>

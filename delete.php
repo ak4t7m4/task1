@@ -5,7 +5,7 @@ $id= $_GET['id'];
 if(!$id){
     header("location: adminlogin.php");
 }
-mysqli_query($conn, "delete from register where id ='$id'");
+mysqli_query($conn, "delete from users where id ='$id'");
 
 ?>
 <script>

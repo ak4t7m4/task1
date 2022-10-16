@@ -1,11 +1,12 @@
 <?php
 session_start();
 include('header.php');
-if(isset($_SESSION)){
+if(isset($_SESSION['data']['id'])){
+    if($_SESSION['data']['role']=='user'){
+        header("location: userdash.php");
+    }
     if($_SESSION['data']['role']=='admin'){
         header("location: admindash.php");
-    }else{
-        header("location: userdash.php");
     }
 }
 // print_r($_SESSION['data']);
@@ -49,12 +50,12 @@ if (isset($_POST['submit'])) {
 
     $filename = $_FILES['fileToUpload']['name'];
 
-    move_uploaded_file($_FILES['fileToUpload']['tmp_name'], "image/" . $filename);
-    $exist = "select * from register where email ='$email'";
+    $exist = "select * from users where email ='$email'";
     $query2 = mysqli_query($conn, $exist);
     if ($query2->num_rows == 0) {
-
+        
         if ($password == $cpassword) {
+            move_uploaded_file($_FILES['fileToUpload']['tmp_name'], "image/" . $filename);
             $sql = "INSERT INTO `users` (`name`, `email`, `password`, `image`, `utype`) VALUES ('$name', '$email', '$password','$filename', 'user')";
             $query = mysqli_query($conn, $sql);
             if ($query) {
