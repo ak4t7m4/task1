@@ -4,6 +4,9 @@ include('header.php');
     if(!$_SESSION['data']['role']=='admin'){
         header("location: index.php");
     }
+    if(!isset($_GET['id'])){
+        header("location: admindash.php");
+    }
 $uid = $_GET['id'];
 $sql = "select * from users where id = '$uid'";
 $data = mysqli_query($conn,$sql);

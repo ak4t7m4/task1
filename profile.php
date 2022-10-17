@@ -15,10 +15,35 @@ $sql = "select * from users where id = '$uid'";
 $query = mysqli_query($conn,$sql);
 $row = mysqli_fetch_assoc($query);
 ?>
+<!-- udate details  -->
+<?php 
+if(isset($_POST['update'])){
+    $name = $_POST['name'];
+    $password = $_POST['password'];
+    $sql1 = "update users set name = '$name', password = '$password', where id ='$uid'";
+    $query1 = mysqli_query($conn, $sql1);
+    if($query1){
+        ?>
+        <script>
+            alert("Details updated");
+            location.replace("userdash.php");
+            </script>
+<?php
+    }else{
+        ?>
+        <script>
+            alert("Details not updated");
+            location.replace("profile.php");
+        </script>
+<?php
+    } 
+}
 
+
+?>
     <div class="container">
         <div class="row" style="width: 500px; margin-left: 300px;">
-            <form class="mt-5 center" method="POST">
+            <form class="mt-5 center" action="<?php htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="POST">
                 <h3 style="text-align: center;">User Profile</h3>
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">profile pic</label>
@@ -30,19 +55,19 @@ $row = mysqli_fetch_assoc($query);
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Email</label>
-                    <input type="email" name="email"  value="<?php echo $row['email'] ?>" class="form-control" >
+                    <input type="email" name="email"  value="<?php echo $row['email'] ?>" class="form-control" readonly>
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" name="password"  value="<?php echo $row['password'] ?>" class="form-control" >
+                    <input type="text" name="password"  value="<?php echo $row['password'] ?>" class="form-control" >
                 </div>
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label"> User Type</label>
-                    <input type="text" name="cpassword" value="<?php echo $row['utype'] ?>" class="form-control" >
+                    <input type="text" name="cpassword" value="<?php echo $row['utype'] ?>" class="form-control" readonly>
                 </div>
                
 
-                <button type="button" name="submit" class="btn btn-primary">Update</button>
+                <button type="submit" name="update" class="btn btn-primary">Update</button>
                 <button class="btn btn-danger" type="button" onclick="goback()">Back</button>
             </form>
         </div>
