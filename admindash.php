@@ -22,10 +22,10 @@ $offset = ($page - 1) * $limit;
 <div class="container">
 
     <h3 style="text-align: center;">Welcome to Admin Pannel this is Registered Users</h3>
-<!-- Searching data  -->
+    <!-- Searching data  -->
     <div style="width: 200px; margin-left: 500px;">
         <form class="d-flex" action="<?php htmlspecialchars($_SERVER['PHP_SELF']) ?>" method="get">
-            <input class="form-control me-2" type="text" value="<?php if(isset($_GET['search'])) {
+            <input class="form-control me-2" type="text" value="<?php if (isset($_GET['search'])) {
                                                                     echo $_GET['search'];
                                                                 } ?>" name="search" placeholder="Search">
             <button class="btn btn-outline-secondary" name="search" type="submit">Search</button>
@@ -38,19 +38,30 @@ $offset = ($page - 1) * $limit;
             if ($result1->num_rows > 0) {
                 while ($row = mysqli_fetch_array($result1)) {
         ?>
-                    <tr id="<?php echo $row['id'] ?>">
-                        <td><?php echo $row['id']; ?></td>
-                        <td data-column="name"><?php echo $row['name']; ?></td>
-                        <td data-column="email"><?php echo $row['email']; ?></td>
-                        <td data-column="password"><?php echo $row['password']; ?></td>
-                        <td data-column="date"><?php echo $row['register_date']; ?></td>
-                        <td><a href="edit.php?id=<?php echo $row['id'] ?>"><button class="btn btn-warning user_edit" edit-id="<?php echo $row['id'] ?>" type="submit" id="Edit-btn">Edit</button></a>
+                    <table class="table table-bordered table-striped">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Password</th>
+                            <th>Register Date</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                        <tr id="<?php echo $row['id'] ?>">
+                            <td><?php echo $row['id']; ?></td>
+                            <td data-column="name"><?php echo $row['name']; ?></td>
+                            <td data-column="email"><?php echo $row['email']; ?></td>
+                            <td data-column="password"><?php echo $row['password']; ?></td>
+                            <td data-column="date"><?php echo $row['register_date']; ?></td>
+                            <td><a href="edit.php?id=<?php echo $row['id'] ?>"><button class="btn btn-warning user_edit" edit-id="<?php echo $row['id'] ?>" type="submit" id="Edit-btn">Edit</button></a>
 
-                        </td>
-                        <td>
-                            <a href="delete.php?id=<?php echo $row['id'] ?>"><button class="btn btn-danger delete_users" user-id="<?php echo $row['id'] ?>" type="submit">Delete</button></a>
-                        </td>
-                    </tr>
+                            </td>
+                            <td>
+                                <a href="delete.php?id=<?php echo $row['id'] ?>"><button class="btn btn-danger delete_users" user-id="<?php echo $row['id'] ?>" type="submit">Delete</button></a>
+                            </td>
+                        </tr>
+                    </table>
         <?php
                 }
             } else {
@@ -59,8 +70,8 @@ $offset = ($page - 1) * $limit;
         }
         ?>
 
-        <a href="logout.php"><button type="button" class="btn btn-danger">Logout</button></a>
-    </div>
+</div>
+<a href="logout.php"><button type="button" class="btn btn-danger">Logout</button></a>
     <hr>
     <table class="table table-bordered table-striped">
         <tr>
@@ -96,6 +107,7 @@ $offset = ($page - 1) * $limit;
         <a style="margin-bottom: 100px;" href="adminadd.php"><button type="button" class="btn btn-success">Add</button></a>
     </table>
 </div>
+<!-- pagination  -->
 <div style="margin-left:500px ;">
 
     <?php
